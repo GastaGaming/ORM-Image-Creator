@@ -46,13 +46,24 @@ namespace Gasta
         }
         void Start()
         {
-
+            //Gasta.OrmImageCreator.Instance.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            if(goDirPath.GetComponent<TMPro.TMP_InputField>().text != currentPath)
+            {
+                string path = goDirPath.GetComponent<TMPro.TMP_InputField>().text;
+                if(Directory.Exists(path))
+                {
+
+                    if (Input.GetKeyDown("enter") || Input.GetKeyDown("return"))
+                    {
+                        SetPath(path);
+                    }
+                }
+            }
         }
         public void SetPath(string path)
         {
@@ -123,6 +134,15 @@ namespace Gasta
                 pathHistory.Add(path);
                 historyLocation++;
             }
+        }
+        public void HideFileBrowser()
+        {
+            this.gameObject.SetActive(false);
+        }
+        public void SedPathToOrmImageCreator()
+        {
+            Gasta.OrmImageCreator.Instance.SetInputPath(currentPath);
+            this.gameObject.SetActive(false);
         }
     }
 };

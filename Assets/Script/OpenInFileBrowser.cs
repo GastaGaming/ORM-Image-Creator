@@ -1,4 +1,5 @@
 ﻿//http://wiki.unity3d.com/index.php/OpenInFileBrowser
+#if UNITY_EDITOR
 public static class OpenInFileBrowser
 {
 	public static bool IsInMacOS
@@ -102,3 +103,4 @@ public static class OpenInFileBrowser
 		}
 	}
 }
+#endif
